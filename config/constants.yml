@@ -1,0 +1,9 @@
+DB_NAME : "database/vaccine_tracker.db"
+
+MAIN_FILE : 'main'
+
+ADMIN_MENU: 'admin_menu'
+
+EXIT : 'e'
+
+NEWLINE : '\n'

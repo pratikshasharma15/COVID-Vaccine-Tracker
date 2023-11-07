@@ -1,0 +1,120 @@
+WELCOME_MSG : "WELCOME TO COVID VACCINE TRACKER"
+
+ENTER_VALID : "Enter valid choice!\n"
+
+NOT_VACCINATED : "\nYou are Not Vaccinated !\n"
+
+VACC_STATUS_1 : "\nYou are Vaccinated with Dose-1\n"
+
+VACC_STATUS_2 : "\nYou are Fully Vaccinated\n"
+
+REMINDER_1 : "You are not vaccinated! Please get vaccinated with Dose-1.\n"
+
+REMINDER_2 : "You have completed 60 days after Dose-1. Please get vaccinated with Dose-2.\n"
+
+REMINDER_3 : "You have not completed 60 days after Dose-1 "
+
+REMINDER_4 : "You are fully vaccinated!\n"
+
+DOSE2_DATE_INVALID : "This date is not after 60 days from Dose-1 date"
+
+ENTER_VALID_DATE : "Enter valid date!\n"
+
+CANNOT_UPDATE_DOSE2 : "You have not completed 60 days after Dose-1, so you cannot update your vaccination status for Dose-2\n"
+
+ENTER_DOSE2_DETAILS : "Enter Dose-2 details: \n"
+
+STATUS_UPDATED : "\nVaccination Status updated Successfully!\n"
+
+ENTER_VALID_NAME : "Enter valid name!\n"
+
+NO_VACC_USER : "No vaccinated user!\n"
+
+STATUS_ALREADY_UPTODATE : "Your vaccination status is already up to date!\n"
+
+VACC_NAME : "  Vaccine Name"
+
+TRY_AGAIN : "\nPlease try again\n"
+
+ENTER_DOSE1_DETAILS : "\nEnter Dose-1 Details: \n"
+
+FUTURE_DATE_MSG : "You cannot enter future date"
+
+APPROVAL_SUCCESS : "Approved Successfully!\n"
+
+DATA_NOT_FOUND : "No data to approve for Dose-2 currently, first approve Dose-1 details if any!\n"
+
+USER_ADDED_SUCCESS : "User added successfully!\n"
+
+NO_INFO_FOR_DATE : "No Info found for this Date!\n"
+
+CHANGE_DEFAULT_PWD : "Change your default password!\n"
+
+CONFIRM_PWD_NOT_MATCHED : "Passwords does not match! Please try again!\n"
+
+INVALID_CREDENTIALS : "Invalid username or password!!!\n"
+
+ATTEMPTS_LEFT : "You have {attempts} attempts left!\n"
+
+ENTER_VALID_EMAIL : "Enter valid input!"
+
+SHOW_STATUS_MEANING : | 
+  
+  0 : Not vaccinated
+  1 : Vaccinated with Dose-1
+  2 : Fully Vaccinated
+
+VACCINE_NO_USER : "No user is vaccinated with this vaccine currently!\n"
+
+ENTER_STRONG_PWD : "Password not strong...Enter strong password \n"
+
+
+
+
+# NEWLINE : \n
+
+# DB_NAME : "database\\vaccine_tracker.db"
+
+# EMP_MENU_FILE : employee_menu
+
+# ADMIN_MENU_FILE : 'admin_menu'
+
+# AUTH_FILE : 'auth'
+
+# MAIN_FILE : 'main'
+
+# LOGS_FILE_PATH  : 'utils\\logs.txt'
+
+# MAIN : "__main__"
+
+# EXIT : 'e'
+
+# MALE : male
+
+# FEMALE : female
+
+# YES : "Y"
+
+# FALSE : "False"
+
+# READ_FILE : 'r'
+
+# USERNAME_PRESENT_MSG  : "Username already present!"
+
+# APPROVAL_HEADER : "User ID", "Dose-1 CID", "Approved", "Dose-2 CID", "Approved"
+
+# FPATH_DB_QUERIES : 'database\\db_queries.yml'
+
+# FPATH_PROMPTS : 'config\\prompts.yml'
+
+# FPATH_PRINTS : 'config\\prints.yml'
+
+# FPATH_LOGS : 'config\\logs.yml'
+
+# ADMIN : "Admin"
+
+# PWD_PATTERN : "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$"
+
+# DATE_PATTERN : '(0[1-9]|[12][0-9]|3[01])(\/)(0[1-9]|1[0,1,2])(\/)(20)((19)|(2)[01234])'
+
+# EMAIL_PATTERN : r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,7}$'
