@@ -8,7 +8,7 @@ from config.prompts import PromptsConfig
 
 
 def change_default_pwd(username):
-        """ 
+        """
         Change default password on first time login.
         """
         while True:
@@ -26,4 +26,4 @@ def change_default_pwd(username):
             else:
                 hashed_password = hashlib.sha256(new_password.encode()).hexdigest()
                 db_operations.db_dao(DbConfig.UPDATE_PWD,(hashed_password, username))
-                break
+                break          
