@@ -129,3 +129,9 @@ GET_DOSE1_CID : "Enter Dose-1 CID: "
 GET_DOSE2_CID : "Enter Dose-2 CID: "
 
 ENTER_USERNAME : "Enter username: "
+
+EMPTY_NAME_ERROR : "Cannot input empty name!"
+
+NAME_ALREADY_EXISTS : "Vaccine name already exists!\n"
+
+NOT_ALPHABETIC_NAME : "Vaccine name must be alphabetic only!\n"

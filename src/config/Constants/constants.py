@@ -1,6 +1,6 @@
 import yaml
 
-FPATH='src\\config\\constants.yml'
+FPATH='src\\config\\Constants\\constants.yml'
 
 class Constants:
 

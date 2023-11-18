@@ -1,14 +1,16 @@
 from os import system
-from config.prints import Prints
+from config.Prints.prints import Prints
 from users.admin.admin_operations.view_vaccinated_emp import view_filters as filter
-from config.prompts import PromptsConfig
+from config.Prompts.prompts import PromptsConfig
 
 
 def view_vacc_status_menu():
     """
-    It shows all the filter options on the basis of which admin can view vaccination info of employees.
+        It shows all the filter options on the basis of which admin can view vaccination info of employees.
     """
+    
     system('cls')
+
     while True:
         choice = (input(PromptsConfig.VIEW_VACC_STATUS_PROMPT))
         if choice == '1':

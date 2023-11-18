@@ -1,7 +1,6 @@
 import yaml
-from config.constants import Constants
 
-FPATH = "src\\config\\prints.yml"
+FPATH = "src\\config\\Prints\\prints.yml"
 
 class Prints:
 
@@ -42,6 +41,8 @@ class Prints:
             cls.SHOW_STATUS_MEANING = data['SHOW_STATUS_MEANING']
             cls.VACCINE_NO_USER = data['VACCINE_NO_USER']
             cls.ENTER_STRONG_PWD = data['ENTER_STRONG_PWD']
+            cls.ENTER_VALID_INPUT = data['ENTER_VALID_INPUT']
+            cls.ID_NOT_FOUND = data['ID_NOT_FOUND']
 
 
             # cls.NEWLINE = data['NEWLINE']

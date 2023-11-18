@@ -1,20 +1,27 @@
+import time
 from tabulate import tabulate
 from utils import utils
-from config.prompts import PromptsConfig
+from utils.generators import list_generator
+from config.Prompts.prompts import PromptsConfig
 from database import db_operations
-from config.prints import Prints
-from config.constants import Constants
+from config.Prints.prints import Prints
+from config.Queries.db_queries import DbConfig
+from config.Constants.constants import Constants
 from users.admin import admin_menu
-from database.db_queries import DbConfig
 
-        
+
 def view_all():
     data = db_operations.db_fetchall_dao(DbConfig.FETCH_USER_DETAILS)
     print(tabulate(data, headers= ["UserID","Email", "Vaccination Status" ]))
+    # employee_generator = list_generator(data)
+    # for employees in employee_generator:
+    #     print(tabulate(employees, headers= ["UserID","Email", "Vaccination Status" ]))
+    #     time.sleep(5)
 
 
 def view_by_dose(status):
     data = db_operations.db_fetchall_dao(DbConfig.FETCH_BY_DOSE,(status,))
+
     if data :
         print(tabulate(data, headers = ["User ID", "Username", "Vaccination Status"]))
         print(Prints.SHOW_STATUS_MEANING)
@@ -25,20 +32,24 @@ def view_by_dose(status):
 def view_by_vaccine():
     utils.vaccine_names()
     choice = input(PromptsConfig.GET_VACCINE)
+
     while choice != Constants.EXIT:
         data = db_operations.db_fetchall_dao(DbConfig.FETCH_BY_VACCINE,(choice,))
         vaccine = db_operations.db_fetchone_dao(DbConfig.FETCH_VACCINE_DETAILS,(choice,))
+
         if data:
             print(tabulate(data, headers= ["User ID", "email", "Vaccine Name", "Vaccination Status"]), "\n")
         elif vaccine:
             print(Prints.VACCINE_NO_USER)
         else:
             print(Prints.ENTER_VALID_NAME)
+
         utils.vaccine_names()
         choice = input(PromptsConfig.GET_VACCINE)
 
 
 def view_by_dose_date(dose_num):
+
     while True:
         date = input(PromptsConfig.GET_DATE)
         if utils.date_validator(date) == True :

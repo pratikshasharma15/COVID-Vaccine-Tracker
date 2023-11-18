@@ -1,8 +1,6 @@
 import yaml
-from config.constants import Constants
-from config.prints import Prints
 
-FPATH = "src\\config\\logs.yml"
+FPATH = "src\\config\\Logs\\logs.yml"
 
 class Logs:
 

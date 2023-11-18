@@ -1,24 +1,25 @@
 import re
 import shortuuid
 from datetime import datetime
+from datetime import date
 from tabulate import tabulate
 from database import db_operations
-from config.prints import Prints
-from config.prompts import PromptsConfig
-from config.constants import Constants
+from config.Prints.prints import Prints
+from config.Prompts.prompts import PromptsConfig
+from config.Constants.constants import Constants
+from config.Queries.db_queries import DbConfig
 from utils.exceptions import UsernameAlreadyExistsError
-from database.db_queries import DbConfig
 
 
 def generate_uuid():
         user_id = int(shortuuid.ShortUUID("123456789").random(4))
         return user_id
 
-def generate_valid_email():
+def input_valid_email():
     while True:
         email=input(PromptsConfig.ENTER_USERNAME)
         pattern = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,7}$'
-        if re.match(pattern, email) is not None:
+        if re.fullmatch(pattern, email) is not None:
             try:
                 if(db_operations.db_fetchall_dao(DbConfig.FETCH_AUTH_DATA,(email.lower(),))):
                    raise UsernameAlreadyExistsError("Username already present!")
@@ -30,16 +31,17 @@ def generate_valid_email():
 
 def pwd_validator(password):
     pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"
-    if re.match(pattern,password) is not None:
+    if re.fullmatch(pattern,password) is not None:
         return True
     else:
         return False
        
 def date_validator(date):
     pattern = '(0[1-9]|[12][0-9]|3[01])(\/)(0[1-9]|1[0,1,2])(\/)(20)((19)|(2)[01234])'
-    if re.fullmatch(pattern,date):
+    try:
+        is_valid_date = datetime.strptime(date, "%d/%m/%Y").date()
         return True
-    else:
+    except Exception as e:
         return False
     
 def convert_to_datetime_obj(date):
@@ -71,8 +73,8 @@ def is_future_date(date):
         return False
     
 def is_acceptable_id(id):
-    db_id_1 = db_operations.db_fetchone_dao('SELECT * FROM dose_details WHERE dose_1_cid = ?',(id, ))
-    db_id_2 = db_operations.db_fetchone_dao('SELECT * FROM dose_details WHERE dose_2_cid = ?',(id, ))
+    db_id_1 = db_operations.db_fetchone_dao(DbConfig.FETCH_DOSE1_DATA,(id, ))
+    db_id_2 = db_operations.db_fetchone_dao(DbConfig.FETCH_DOSE2_DATA,(id, ))
     if db_id_1 == None:
         if db_id_2 == None:
             return True

@@ -1,10 +1,10 @@
 import logging
 from utils import utils
-from config.prints import Prints
-from config.prompts import PromptsConfig
-from config.constants import Constants
 from database import db_operations
-from database.db_queries import DbConfig
+from config.Prints.prints import Prints
+from config.Prompts.prompts import PromptsConfig
+from config.Constants.constants import Constants
+from config.Queries.db_queries import DbConfig
 from users.employee.emp_operations.dose_details import DoseDetails
 
 logger = logging.getLogger('vaccination_details')

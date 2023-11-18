@@ -1,8 +1,8 @@
 import logging
-from config.prompts import PromptsConfig
-from config.prints import Prints
-from config.constants import Constants
-from database.db_queries import DbConfig
+from config.Prompts.prompts import PromptsConfig
+from config.Prints.prints import Prints
+from config.Constants.constants import Constants
+from config.Queries.db_queries import DbConfig
 from database import db_operations
 
 logger = logging.getLogger('profile')
@@ -27,3 +27,5 @@ class Profile:
                 break
             print(Prints.ENTER_VALID)
         db_operations.db_dao(DbConfig.UPDATE_GENDER,(gender, self.user_id,))
+
+    

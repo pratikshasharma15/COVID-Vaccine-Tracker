@@ -1,8 +1,6 @@
 import yaml
-from config.constants import Constants
-from config.prints import Prints
 
-FPATH = "src\\config\\prompts.yml"
+FPATH = "src\\config\\Prompts\\prompts.yml"
 
 class PromptsConfig:
 
@@ -37,3 +35,6 @@ class PromptsConfig:
             cls.GET_DOSE1_CID = data['GET_DOSE1_CID']
             cls.GET_DOSE2_CID = data['GET_DOSE2_CID']
             cls.ENTER_USERNAME = data['ENTER_USERNAME']
+            cls.EMPTY_NAME_ERROR = data['EMPTY_NAME_ERROR']
+            cls.NAME_ALREADY_EXISTS = data['NAME_ALREADY_EXISTS']
+            cls.NOT_ALPHABETIC_NAME = data['NOT_ALPHABETIC_NAME']

@@ -1,7 +1,6 @@
 import yaml
-from config.prints import Prints
 
-FPATH = "src\\database\\db_queries.yml"
+FPATH = "src\\config\\Queries\\db_queries.yml"
 
 class DbConfig:
 
@@ -44,3 +43,6 @@ class DbConfig:
             cls.FETCH_AUTH_DATA = data['FETCH_AUTH_DATA']
             cls.FETCH_VACCINE_NAME = data['FETCH_VACCINE_NAME']
             cls.FETCH_USER_DETAILS = data['FETCH_USER_DETAILS']
+            cls.FETCH_DOSE1_DATA = data['FETCH_DOSE1_DATA']
+            cls.FETCH_DOSE2_DATA = data['FETCH_DOSE2_DATA']
+            cls.FETCH_VACCINE = data['FETCH_VACCINE']

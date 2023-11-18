@@ -68,7 +68,9 @@ VACCINE_NO_USER : "No user is vaccinated with this vaccine currently!\n"
 
 ENTER_STRONG_PWD : "Password not strong...Enter strong password \n"
 
+ENTER_VALID_INPUT : "Enter valid input!\n"
 
+ID_NOT_FOUND : "\nUser Id Not Found!\n"
 
 
 # NEWLINE : \n

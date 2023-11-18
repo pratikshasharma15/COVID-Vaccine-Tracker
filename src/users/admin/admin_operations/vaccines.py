@@ -1,26 +1,30 @@
-import logging
 import re
+import logging
 from tabulate import tabulate
 from utils import utils
 from utils.exceptions import VaccineNameError
+from config.Queries.db_queries import DbConfig
+from config.Prompts.prompts import PromptsConfig
 from database import db_operations
-from database.db_queries import DbConfig
 
 
 logger = logging.getLogger('vaccines')
 
 
 def add_vaccine():
+
     name = input("Enter vaccine name: ")
+
     try:
         if len(name.strip()) == 0:
-            raise VaccineNameError("Cannot input empty name!")
-        elif re.match(name, '^[a-z,A-Z][a-zA-Z ]+[a-zA-Z]$') ==  False:
-            raise VaccineNameError("Vaccine name must be alphanumeric only!\n")
+            raise VaccineNameError(PromptsConfig.EMPTY_NAME_ERROR)
+        elif re.fullmatch(name, '^[a-zA-Z]*$') is None:
+            raise VaccineNameError(PromptsConfig.NOT_ALPHABETIC_NAME)
         
-        data = db_operations.db_fetchone_dao('SELECT * FROM vaccine WHERE vaccine_name = ?', (name, ))
+        data = db_operations.db_fetchone_dao(DbConfig.FETCH_VACCINE_DETAILS, (name, ))
+        
         if data:
-            raise VaccineNameError("Vaccine name already exists!\n")
+            raise VaccineNameError(PromptsConfig.NAME_ALREADY_EXISTS)
         
     except VaccineNameError as v:
         print(v.msg)
@@ -32,5 +36,6 @@ def add_vaccine():
 
 
 def view_vaccine():
-    data = db_operations.db_fetchall_dao('SELECT * FROM vaccine')
+
+    data = db_operations.db_fetchall_dao(DbConfig.FETCH_VACCINE)
     print(tabulate(data, headers = ["Vaccine ID", "Vaccine Name"]), "\n")

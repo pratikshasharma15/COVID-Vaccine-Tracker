@@ -112,3 +112,9 @@ FETCH_AUTH_DATA : 'SELECT * FROM auth WHERE username = ?'
 FETCH_VACCINE_NAME :  'SELECT vaccine_name FROM vaccine'
 
 FETCH_USER_DETAILS : 'SELECT user_id, email, vaccination_status FROM user_details'
+
+FETCH_DOSE1_DATA : 'SELECT * FROM dose_details WHERE dose_1_cid = ?'
+
+FETCH_DOSE2_DATA : 'SELECT * FROM dose_details WHERE dose_2_cid = ?'
+
+FETCH_VACCINE : 'SELECT * FROM vaccine'

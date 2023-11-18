@@ -1,11 +1,9 @@
 from datetime import datetime
 from utils import utils, exceptions
-from config.prompts import PromptsConfig
-from config.prints import Prints
-from database.db_queries import DbConfig
+from config.Prompts.prompts import PromptsConfig
+from config.Prints.prints import Prints
+from config.Queries.db_queries import DbConfig
 from database import db_operations
-
-
 
 
 class DoseDetails:

@@ -3,18 +3,20 @@ import logging
 from os import system
 from datetime import datetime
 from utils import utils
-from users.employee.emp_operations.vaccination_status import VaccinationStatus
-from users.employee.emp_operations.profile import Profile
-from config.logs import Logs
-from config.prints import Prints
-from config.prompts import PromptsConfig
-from config.constants import Constants
+from utils.decorators import log_function_call
+from config.Logs.logs import Logs
+from config.Prints.prints import Prints
+from config.Queries.db_queries import DbConfig
+from config.Prompts.prompts import PromptsConfig
+from config.Constants.constants import Constants
 from database import db_operations
-from database.db_queries import DbConfig
+from users.employee.emp_operations.profile import Profile
+from users.employee.emp_operations.vaccination_status import VaccinationStatus
 
 logger = logging.getLogger('employee_menu')
 
 class Employee:
+   
     def __init__(self, user_id) -> None:
         logger.info(Logs.EMPLOYEE_MSG)
         print("*******WELCOME TO EMPLOYEE DASHBOARD**********")
@@ -25,6 +27,9 @@ class Employee:
         self.menu()
 
     def menu(self):
+        """
+            Menu functions which shows different operations an employee can perform.
+        """
         self.vacc_obj = VaccinationStatus(self.user_id)
         employee_choice = (input(PromptsConfig.EMPLOYEE_PROMPT))
         while employee_choice != '5':
@@ -45,13 +50,13 @@ class Employee:
   
     def show_reminders(self):
         if self.status == 0:
-            print("\n",Prints.REMINDER_1)
+            print(Constants.NEWLINE,Prints.REMINDER_1)
         elif self.status == 1:
             self.dose_1_date = (db_operations.db_fetchone_dao(DbConfig.SELECT_DOSE1_DATE,(self.user_id,)))[0]
             is_eligible_for_dose2 = utils.check_date_diff((datetime.now()).strftime("%d/%m/%Y"), self.dose_1_date )
             if is_eligible_for_dose2 == True:
-                print("\n",Prints.REMINDER_2)
+                print(Constants.NEWLINE,Prints.REMINDER_2)
             else:
-                print("\n",Prints.REMINDER_3, Constants.NEWLINE)
+                print(Constants.NEWLINE,Prints.REMINDER_3, Constants.NEWLINE)
         else:
-            print("\n",Prints.REMINDER_4)
+            print(Constants.NEWLINE,Prints.REMINDER_4)
